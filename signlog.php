@@ -76,7 +76,7 @@ function save_logdata()
 <div class="container" id="container">
 <div class="form-container sign-up-container">
 <div id="message"></div>
-<form id="sample_form">
+<form id="sample_form" enctype="multipart/form-data">
 	
 <div id="status"></div>
 	<h1>Create Account</h1>
@@ -92,6 +92,7 @@ function save_logdata()
 	<span id="email_error" class="text-danger"></span>
 	<input type="password" name="password" id="password" class="form-control form_data" placeholder="Password">
 	<span id="password_error" class="text-danger"></span>
+<input type="file" class="form-control form_data" name="image" placeholder="upload image">
 	<button type="button"  onclick="save_data(); return false;" id="submit" >SignUp</button>
 </form>
 </div>

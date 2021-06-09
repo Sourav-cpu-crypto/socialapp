@@ -55,7 +55,7 @@ session_start();
             ':password'    => $password
 		);
 
-		$query = "select * from user where email='".$email."' and password='".$password."'";
+		$query = "select * from users where email='".$email."' and password='".$password."'";
 
 		$statement = mysqli_query($con,$query);
         if(mysqli_num_rows($statement)>0)

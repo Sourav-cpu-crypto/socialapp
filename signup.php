@@ -7,7 +7,8 @@
 
 if(isset($_POST["name"]))
 {
-    
+    $p=$_POST["image"];
+   $p=basename($p);
 	sleep(5);
 	$connect = new PDO("mysql:host=localhost; dbname=socialapp", "root", "");
 
@@ -67,7 +68,7 @@ if(isset($_POST["name"]))
             ':password'    => $password
 		);
 
-		$query = "INSERT INTO user(name,email,password) VALUES('".$name."','".$email."','".$password."')";
+		$query = "INSERT INTO users(name,email,password,filename) VALUES('".$name."','".$email."','".$password."','".$p."')";
 
 		$statement = $connect->prepare($query);
 
