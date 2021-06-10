@@ -25,6 +25,7 @@
 
 </div>
 </div>
+<?php require_once "tweet.php";?>
 </div>
 
 </div>
