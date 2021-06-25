@@ -1,4 +1,5 @@
 
+
 <?php
 
 //process_data.php
@@ -19,7 +20,6 @@ session_start();
 
 	$password = $_POST["password1"];
 
-	$_SESSION['email']=$email;
 
 
 	$name_error = '';
@@ -45,7 +45,7 @@ session_start();
 		$password_error = 'password is Required';
 	}
 
-	if($email_error == '' && $password_error == '' )
+	if($email_error == '' && $password_error == ''  )
 	{
 		//put insert data code here 
 
@@ -60,7 +60,15 @@ session_start();
 		$statement = mysqli_query($con,$query);
         if(mysqli_num_rows($statement)>0)
         {
+    
+       
+			     $row = mysqli_fetch_assoc($statement);
+
+               $_SESSION['id'] = $row['id'];
+			   	$_SESSION['email']=$email;
             $success = "login successful"; 
+ $sql2 = mysqli_query($con, "UPDATE users SET status = 'Active now' WHERE id = {$row['id']}");
+                
      
              
         } 
