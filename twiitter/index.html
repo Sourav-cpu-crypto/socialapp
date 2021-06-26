@@ -87,9 +87,9 @@
             </div>
             <div class="status">
                 <div class="img"></div>
-                <form class="happening">
-                    <input type="text" placeholder="What's happening">
-                    <button class="tweet__btn">
+                <form class="happening" id="sample_form">
+                    <input type="text" name="name" class="form-control form_data" placeholder="What's happening">
+                    <button class="tweet__btn"   onclick="save_data2(); return false;">
                         Tweet
                     </button>
                 </form>
@@ -157,5 +157,6 @@
             </div>
         </section> 
     </div>
+    <script src="main.js"></script>
 </body>
 </html>
