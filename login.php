@@ -65,7 +65,6 @@ session_start();
 			     $row = mysqli_fetch_assoc($statement);
 
                $_SESSION['id'] = $row['id'];
-			   	$_SESSION['email']=$email;
             $success = "login successful"; 
  $sql2 = mysqli_query($con, "UPDATE users SET status = 'Active now' WHERE id = {$row['id']}");
                 
