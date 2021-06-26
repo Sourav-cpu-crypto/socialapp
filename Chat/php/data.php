@@ -13,9 +13,9 @@
 
         $output .= '<a href="chat.php?user_id='. $row['id'] .'">
                     <div class="content">
-                    <img src="php/images/'. $row['img'] .'" alt="">
+                    
                     <div class="details">
-                        <span>'. $row['fname']. " " . $row['lname'] .'</span>
+                        <span>'.$row['name'].'</span>
                         <p>'.$msg .'</p>
                     </div>
                     </div>
