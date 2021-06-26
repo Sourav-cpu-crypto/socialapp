@@ -1,6 +1,11 @@
 <?php
 
 session_start();
+if(!isset($_SESSION["id"]))
+{
+header("Location:signlog.php");
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,6 +65,7 @@ session_start();
 				
         
             <form>
+
                 <span class="icon"><i class="fas fa-search"></i></span>
                 <input type="text" placeholder="">
             </form>
@@ -71,7 +77,9 @@ session_start();
                 <div class="img"></div>
                 <form class="happening" method="post" action="post.php" enctype="multipart/form-data">
 
+
                     <input type="text" name="msg" placeholder="write something">
+<h1>image upload</h1>
 					<input type="file"  name="image1">
                     <input type="submit"name="submit" value="Post" class="tweet__btn">
                      
@@ -86,25 +94,34 @@ $result = mysqli_query($con, $sql);
 if (mysqli_num_rows($result) > 0) {
   // output data of each row
   while($row = mysqli_fetch_assoc($result)) {
-    $sql1 = "SELECT * FROM users where id='" . $row['user_id']. "'";
+
+
+
+
+ $sql1 = "SELECT * FROM users where id='". $row['user_id'] ."'";
     $result1 = mysqli_query($con, $sql1);
 if (mysqli_num_rows($result1) > 0){
   // output data of each row
-  while($row = mysqli_fetch_assoc($result1))
-{$name=$row['name'];
-	  if(!empty($row['image']))
+  while($row1 = mysqli_fetch_assoc($result1))
+{
+$name=$row1["name"];
+}
+}
+ if(!empty($row['image']))
 	  {
    echo '<div class="box__img">
    <div class="img"></div>
    <div class="tweet">
        <div class="user__info--tweet">
-           <h4>posted on:</h4>
-           <h4>'.$row['date'].'</h4>
+<h4>'.$name.'</h4>
+<br>
+           
        </div>
            <br>
            <br>
-           <h4>posted by:</h4>
-           <h4>'.'$name'.'</h4>
+           <h4>posted on:'.$row['date'].'</h4>
+ 
+
        <p>'.$row['post'].'</p>
        <img src="images/'.$row['image'].'" class="tweet__img" >
 	   
@@ -114,19 +131,25 @@ if (mysqli_num_rows($result1) > 0){
 	  }
 	  else
 		  
-		  {
-			    echo '<div class="box__img">
+		  {  echo '<div class="box__img">
    <div class="img"></div>
    <div class="tweet">
        <div class="user__info--tweet">
-               <h4>posted on:</h4>
-           <h4>'.$row['date'].'</h4>
+<h4>'.$name.'</h4>
+<br>
+           
        </div>
+           <br>
+           <br>
+           <h4>posted on:'.$row['date'].'</h4>
+ 
+
        <p>'.$row['post'].'</p>
-       
+      
+	   
+
    </div>
-</div>'; 
-		  }
+</div>';	  }
         }
 } else {
 

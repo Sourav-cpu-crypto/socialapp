@@ -46,6 +46,7 @@ if(isset($_POST["name"]))
 	}
 	else
 	{
+ 
 		if(!filter_var($email, FILTER_VALIDATE_EMAIL))
 		{
 			$email_error = 'eMail is invalid';
@@ -67,7 +68,7 @@ if(isset($_POST["name"]))
             ':password'    => $password
 		);
 
-		$query = "INSERT INTO users(name,email,password) VALUES('".$name."','".$email."','".$password."')";
+		$query = "INSERT INTO users(name,email,password,status) VALUES('".$name."','".$email."','".$password."','')";
 
 		$statement = $connect->prepare($query);
 

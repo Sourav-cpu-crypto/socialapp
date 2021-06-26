@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(!isset($_SESSION["id"]))
+{
+header("Location:signlog.php");
+}
 	$con=mysqli_connect("localhost","root","","socialapp");
 
 if(isset($_POST['submit']))
