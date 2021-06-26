@@ -7,14 +7,7 @@
 
 if(isset($_POST["name"]))
 {
-    $p=$_POST["image"];
-   $p=basename($p);
-   $location = "C:/xampp/htdocs/socal/socialapp/images/";
-   
-   $tempName = $p."mm";
-   
-
-   
+    
 	sleep(5);
 	$connect = new PDO("mysql:host=localhost; dbname=socialapp", "root", "");
 
@@ -74,8 +67,7 @@ if(isset($_POST["name"]))
             ':password'    => $password
 		);
 
-		$query = "INSERT INTO users(name,email,password,filename) 
-VALUES('".$name."','".$email."','".$password."','".$p."')";
+		$query = "INSERT INTO users(name,email,password) VALUES('".$name."','".$email."','".$password."')";
 
 		$statement = $connect->prepare($query);
 

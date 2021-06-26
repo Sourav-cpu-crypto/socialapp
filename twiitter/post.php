@@ -1,36 +1,29 @@
-
-
 <?php
+	$con=mysqli_connect("localhost","root","","socialapp");
 
+if(isset($_POST['submit']))
+{	
+$name=$_POST['msg'];
+	
+$filename=$_FILES['image1']['name'];
+if(empty($filename))
 
-//process_data.php
-
-if(isset($_POST["name"]))
 {
-  
-	$connect = new PDO("mysql:host=localhost; dbname=socialapp", "root", "");
 
-	$success = '';
+		$query = "INSERT INTO `posts`(post,image,date) VALUES('".$name."','".$filename."',NOW())";
 
-	$name = $_POST["name"];
-
-
+		$statement = mysqli_query($con,$query);
+}
+else
+{
 	
 
+$query = "INSERT INTO `posts`(post,image,date) VALUES('".$name."','".$filename."',NOW())";
 
+		$statement = mysqli_query($con,$query);	
+}
 
-
-	
-		$query = "INSERT INTO posts(post) VALUES('".$name."')";
-
-		$statement = $connect->prepare($query);
-
-		$statement->execute($data);
-
-		
-
-
-
+	header("Location:index.php");
 	
 }
 
