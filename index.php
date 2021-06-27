@@ -36,7 +36,7 @@ header("Location:signlog.php");
                 </div>
              
                 <div class="menu__icon">
-                    <a href="msg.php">
+                    <a href="Chat/users.php">
                         <i class="far fa-envelope"></i>
                         Message
                     </a>

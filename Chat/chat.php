@@ -2,7 +2,7 @@
   session_start();
   include_once "php/config.php";
   if(!isset($_SESSION['id'])){
-    header("location: login.php");
+    header("location:login.php");
   }
 ?>
 <?php include_once "header.php"; ?>
@@ -12,7 +12,7 @@
       <header>
         <?php 
           $user_id = mysqli_real_escape_string($conn, $_GET['user_id']);
-          $sql = mysqli_query($conn, "SELECT * FROM users WHERE id = {$user_id}");
+          $sql = mysqli_query($conn, "SELECT * FROM users WHERE id ={$user_id}");
           if(mysqli_num_rows($sql) > 0){
             $row = mysqli_fetch_assoc($sql);
           }else{
