@@ -14,8 +14,11 @@ header("Location:signlog.php");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+    
     <link rel="stylesheet" href="s1.css">
     <!-- font awesome -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
     <title>Twitter Home Page</title>
 </head>
@@ -88,23 +91,32 @@ header("Location:signlog.php");
             </div>
             <?php
 			$con=mysqli_connect("localhost","root","","socialapp");
-$sql = "SELECT * FROM posts";
+$sql = "SELECT * FROM posts,users where users.id=posts.user_id ";
 $result = mysqli_query($con, $sql);
 
 if (mysqli_num_rows($result) > 0) {
   // output data of each row
   while($row = mysqli_fetch_assoc($result)) {
 
+    $name=$row["name"];
 
 
-
- $sql1 = "SELECT * FROM users where id='". $row['user_id'] ."'";
+ $sql1 = "SELECT * FROM likes where post_id='". $row['post_id'] ."'";
     $result1 = mysqli_query($con, $sql1);
 if (mysqli_num_rows($result1) > 0){
   // output data of each row
   while($row1 = mysqli_fetch_assoc($result1))
 {
-$name=$row1["name"];
+$likes=mysqli_num_rows($result1);
+}
+}
+$sql1 = "SELECT * FROM comments where post_id='". $row['post_id'] ."'";
+$result1 = mysqli_query($con, $sql1);
+if (mysqli_num_rows($result1) > 0){
+// output data of each row
+while($row1 = mysqli_fetch_assoc($result1))
+{
+$comments=mysqli_num_rows($result1);
 }
 }
  if(!empty($row['image']))
@@ -124,7 +136,11 @@ $name=$row1["name"];
 
        <p>'.$row['post'].'</p>
        <img src="images/'.$row['image'].'" class="tweet__img" >
-	   
+	   <a href="like.php?post_id='.$row['post_id'].'" class="li">Like</a>
+       <span>'.$likes.'</span>
+       &nbsp
+       <a href="comments.php?post_id='.$row['post_id'].'">Comment</a>
+       <span>'.$comments.'</span>
 
    </div>
 </div>';
@@ -146,7 +162,11 @@ $name=$row1["name"];
 
        <p>'.$row['post'].'</p>
       
-	   
+       <a href="like.php?post_id='.$row['post_id'].'" class="li">Like</a>
+       <span>'.$likes.'</span>
+       &nbsp
+       <a href="comments.php?post_id='.$row['post_id'].'">Comment</a>
+       <span>'.$comments.'</span>
 
    </div>
 </div>';	  }
