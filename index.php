@@ -20,7 +20,7 @@ header("Location:signlog.php");
     <!-- font awesome -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
-    <title>Twitter Home Page</title>
+    <title> Home Page</title>
 </head>
 <body>
     <div class="container">
