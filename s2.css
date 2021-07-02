@@ -188,7 +188,7 @@ width:100%;
 
 #center__area form button{
     border: none;
-    background-color: var(--light-blue);
+    background-color: red;
     padding: 10px 20px;
     border-radius: 50px;
     color: white;

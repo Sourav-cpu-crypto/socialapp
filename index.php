@@ -90,7 +90,7 @@ header("Location:signlog.php");
                     <input type="text" name="msg" placeholder="write something">
 
 					<input type="file"  name="image1">
-                    <input type="submit"name="submit" value="Post" class="tweet__btn">
+                    <button name="submit" value="Post" class="tweet__btn">POst</button>
                      
                 </form>
 
