@@ -44,6 +44,12 @@ header("Location:signlog.php");
                         Message
                     </a>
                 </div>
+                <div class="menu__icon">
+                    <a href="friends/index.php">
+                        <i class="far fa-envelope"></i>
+                        Users
+                    </a>
+                </div>
    <div class="menu__icon">
                     <a href="Chat/php/logout.php?logout_id=<?php echo $_SESSION['id']; ?>">
                         Logout
@@ -99,7 +105,8 @@ if (mysqli_num_rows($result) > 0) {
   while($row = mysqli_fetch_assoc($result)) {
 
     $name=$row["name"];
-
+$likes='';
+$comments='';
 
  $sql1 = "SELECT * FROM likes where post_id='". $row['post_id'] ."'";
     $result1 = mysqli_query($con, $sql1);
@@ -110,13 +117,14 @@ if (mysqli_num_rows($result1) > 0){
 $likes=mysqli_num_rows($result1);
 }
 }
+
 $sql1 = "SELECT * FROM comments where post_id='". $row['post_id'] ."'";
-$result1 = mysqli_query($con, $sql1);
-if (mysqli_num_rows($result1) > 0){
+$result2 = mysqli_query($con, $sql1);
+if (mysqli_num_rows($result2) > 0){
 // output data of each row
-while($row1 = mysqli_fetch_assoc($result1))
+while($row3 = mysqli_fetch_assoc($result1))
 {
-$comments=mysqli_num_rows($result1);
+$comments=mysqli_num_rows($result2);
 }
 }
  if(!empty($row['image']))

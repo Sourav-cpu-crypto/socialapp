@@ -26,7 +26,7 @@ VALUES('".$pid."','".$uid."','".$comment."')";
 
 
 
-	header("Location:comment.php?post_id='.$pid.'");
+	header("Location:index.php");
 
 	
 }
