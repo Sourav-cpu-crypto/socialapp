@@ -29,9 +29,9 @@ searchBar.onkeyup = ()=>{
 }
 
 
-setInterval(() =>{
+
   let xhr = new XMLHttpRequest();
-  
+  searchBar.classList.add("active");
   xhr.open("GET","index1.php", true);
   xhr.onload = ()=>{
     if(xhr.readyState === XMLHttpRequest.DONE){
@@ -42,11 +42,13 @@ setInterval(() =>{
           }
       
         }
+        
     }
+   
   }
   
   xhr.send();
-}, 500);
+
 
 
 
