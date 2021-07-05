@@ -51,6 +51,12 @@ header("Location:signlog.php");
                         Users
                     </a>
                 </div>
+                <div class="menu__icon">
+                    <a href="profiles/login/profile.html">
+                        <i class="far fa-envelope"></i>
+                        Profile
+                    </a>
+                </div>
    <div class="menu__icon">
                     <a href="Chat/php/logout.php?logout_id=<?php echo $_SESSION['id']; ?>">
                         Logout
