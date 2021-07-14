@@ -1,7 +1,7 @@
 
 
 <?php
-
+include "config.php";
 
 //process_data.php
 
@@ -70,11 +70,16 @@ if(isset($_POST["name"]))
 
 		$query = "INSERT INTO users(name,email,password,status) VALUES('".$name."','".$email."','".$password."','')";
 
-		$statement = $connect->prepare($query);
+		$statement = mysqli_query($con,$query);
 
-		$statement->execute($data);
+		
 
 		$success = "Data Saved";
+		$id=mysqli_insert_id($con);
+		$prof="insert into `profiles`(user_id,age,gender,email,mob,about,photo)
+		values('".$id."',0,'','',0,'','')";
+		mysqli_query($con,$prof);
+	
 	}
 
 	$output = array(

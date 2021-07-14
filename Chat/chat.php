@@ -2,14 +2,43 @@
   session_start();
   include_once "php/config.php";
   if(!isset($_SESSION['id'])){
-    header("location:login.php");
+    header("location:../signlog.php");
   }
 ?>
 <?php include_once "header.php"; ?>
 <body>
+<div class="custom-padding">
+		<nav>
+			<div class="logo">
+				Logo
+			</div>
+			<ul class="menu-area">
+				<li>
+					<a href="../index.php">Home</a>
+				</li>
+				<li>
+					<a href="../Chat/users.php">MESSAGE</a>
+				</li>
+        
+                    <a href="../profs/index.php?profile=<?php echo $_SESSION['id']; ?>">
+                     
+                        Profile
+                    </a>
+              
+				<li>
+					<a href="../videochat/vides.php">Video Chat</a>
+				</li>
+				<li>
+				<a href="../Chat/php/logout.php?logout_id=<?php echo $_SESSION['id']; ?>">
+					LOGOUT
+				</li>
+			</ul>
+		</nav>
+	</div>
   <div class="wrapper">
     <section class="chat-area">
       <header>
+
         <?php 
           $user_id = mysqli_real_escape_string($conn, $_GET['user_id']);
           $sql = mysqli_query($conn, "SELECT * FROM users WHERE id ={$user_id}");

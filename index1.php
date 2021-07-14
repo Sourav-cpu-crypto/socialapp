@@ -1,6 +1,7 @@
 <?php
+session_start();
 			$con=mysqli_connect("localhost","root","","socialapp");
-$sql = "SELECT * FROM posts,users where users.id=posts.user_id ";
+$sql = "SELECT * FROM users,posts where (posts.u_id=users.id )  and (status!='deactive') "; 
 $result = mysqli_query($con, $sql);
 
 if (mysqli_num_rows($result) > 0) {
@@ -18,6 +19,7 @@ if (mysqli_num_rows($result1) > 0){
   while($row1 = mysqli_fetch_assoc($result1))
 {
 $likes=mysqli_num_rows($result1);
+
 }
 }
 
@@ -28,6 +30,7 @@ if (mysqli_num_rows($result2) > 0){
 while($row3 = mysqli_fetch_assoc($result2))
 {
 $comments=mysqli_num_rows($result2);
+
 }
 }
  if(!empty($row['image']))
@@ -36,7 +39,8 @@ $comments=mysqli_num_rows($result2);
    <div class="img"></div>
    <div class="tweet">
        <div class="user__info--tweet">
-<h4>'.$name.'</h4>
+       <a href="profs/index.php?profile='.$row['u_id'].'">
+<h4>'.$name.'</h4></a>
 <br>
            
        </div>
@@ -52,6 +56,9 @@ $comments=mysqli_num_rows($result2);
        &nbsp
        <a href="comments.php?post_id='.$row['post_id'].'">Comment</a>
        <span>'.$comments.'</span>
+       &nbsp
+       <a href="reports.php?post_id='.$row['post_id'].'">Report</a>
+       
 
    </div>';
 	  }
@@ -60,8 +67,8 @@ $comments=mysqli_num_rows($result2);
 		  {  echo '<div class="box__img">
    <div class="img"></div>
    <div class="tweet">
-       <div class="user__info--tweet">
-<h4>'.$name.'</h4>
+    <a href="profs/index.php?profile='.$row['u_id'].'">
+   <h4>'.$name.'</h4></a>
 <br>
            
        </div>

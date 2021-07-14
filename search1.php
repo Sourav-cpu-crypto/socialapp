@@ -5,7 +5,7 @@
     $outgoing_id = $_SESSION['id'];
     $searchTerm = $_POST['searchTerm'];
 
-    $sql = "SELECT * FROM posts,users WHERE  users.id=posts.user_id and post LIKE '%{$searchTerm}%'";
+    $sql = "SELECT * FROM posts,users WHERE  posts.u_id=users.id  and (post like '%{$searchTerm}%' or u_name like '%{$searchTerm}%') and users.status!='deactive'";
     $output = "";
     $likes='';
     $comments='';
@@ -37,7 +37,7 @@
            <div class="img"></div>
            <div class="tweet">
                <div class="user__info--tweet">
-        <h4>'.$row["name"].'</h4>
+        <h4>'.$row["u_name"].'</h4>
         <br>
                    
                </div>
@@ -58,7 +58,7 @@
               }
               else
                   
-                  {  echo '<div class="box__img">
+                  {  echo '
            <div class="img"></div>
            <div class="tweet">
                <div class="user__info--tweet">
@@ -80,7 +80,7 @@
                <span>'.$comments.'</span>
         
            </div>
-        </div>';	  }
+        ';	  }
     }
 }else{
         echo'No user found related to your search term';

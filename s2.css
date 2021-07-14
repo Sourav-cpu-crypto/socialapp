@@ -5,6 +5,7 @@
 }
 
 body{
+    background-image: url(https://www.droidmen.com/wp-content/uploads/2019/02/8-Low-key-Social-Network-Service-Apps-That-You-Should-Download-Now.jpg);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -206,7 +207,7 @@ width:100%;
 }
 
 .tweet__img{
-    height: 300px;
+    height: 590px;
     width: 100%;
     margin-top: 10px;
     object-fit: cover;
@@ -293,4 +294,9 @@ width:100%;
 }
 .search input.active {
     display:none;
+}
+.ser
+{
+    height:80%;
+    width:40%;
 }
