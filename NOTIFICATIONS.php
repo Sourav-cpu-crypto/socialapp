@@ -221,7 +221,7 @@ if($row5["u_id"] == $_SESSION["id"])
 
     <ul>
     <li><span>
-     <a href="post.php?post_id='.$row5['post_id'].'">your post. on '.$row5['date'].'</a></span></li>
+     <a href="post.php?post_id='.$row5['post_id'].'">you uploaded a post. on '.$row5['date'].'</a></span></li>
         
     </ul>';}
     else if ( (  $row5["u_id"] != $_SESSION["id"])){

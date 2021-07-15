@@ -5,7 +5,7 @@
         $logout_id = mysqli_real_escape_string($conn, $_GET['logout_id']);
         if(isset($logout_id)){
             $status = "Offline now";
-            $sql = mysqli_query($conn, "UPDATE users SET status = '{$status}' WHERE id='".$_GET['logout_id']."' and status!=deactive");
+            $sql = mysqli_query($conn, "UPDATE users SET status = '{$status}' WHERE id='".$_GET['logout_id']."' ");
             if($sql){
                 session_unset();
                 session_destroy();

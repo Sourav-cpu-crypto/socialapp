@@ -107,7 +107,7 @@ nav:after {
 					<a href="../Chat/users.php">MESSAGE</a>
 				</li>
                 <li>
-                    <a href="profs/index.php?profile=<?php echo $_SESSION['id']; ?>">
+                    <a href="index.php?profile=<?php echo $_SESSION['id']; ?>">
                         <i class="far fa-envelope"></i>
                         Profile
                     </a>

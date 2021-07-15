@@ -19,8 +19,10 @@ $sql8= "delete  from messages where (incoming_msg_id='".$_GET['user']."' or outg
 mysqli_query($con,$sql8);
 $sql9= "delete  from groups where (group_creator_id='".$_GET['user']."')";
 mysqli_query($con,$sql9);
-$sql10= "delete  from group_member_active where (group_requester_id='".$_GET['user']."')";
+$sql10= "delete  from groups_member_active where (group_requester_id='".$_GET['user']."')";
 mysqli_query($con,$sql10);
+$sqll= "delete  from groups_action where (groups_action_id='".$_GET['user']."')";
+mysqli_query($con,$sqll);
 $sql11= "delete  from friends where (user_to='".$_GET['user']."' or user_from='".$_GET['user']."')";
 mysqli_query($con,$sql11);
 
@@ -49,16 +51,14 @@ include "../config.php";
 							   <th>ID</th>
 							   <th>Name</th>
 							   <th>Email</th>
-							   <th>Mobile</th>
-							   <th>age</th>
-							   <th>gender</th>
-							   <th>status</th>
+							<th>status</th>
 							   
 							</tr>
 						 </thead>
 						 <tbody>
-						<?php  $user="select * from users,profiles where users.id=profiles.user_id";
+						<?php  $user="select * from users";
 						$p=mysqli_query($con,$user);
+						
 						while($row1 = mysqli_fetch_assoc($p))
 						{
 							if($row1['status']=='delete')
@@ -69,9 +69,7 @@ include "../config.php";
 							   <td> ' .$row1['id'].'</td>
 							   <td> '.$row1['name'].'</td>
 							   <td> '.$row1['email'].'</td>
-							   <td> '.$row1['mob'].'</td>
-							   <td>'.$row1['age'].'</td>
-							   <td> '.$row1['gender'].'</td>
+							
 							
 							   </td>
 							   <td><a href=users.php?delete='.$row1['status'].'&user='.$row1['id'].'>  '.$row1['status'].'</a></td>
@@ -88,9 +86,7 @@ include "../config.php";
 							   <td> ' .$row1['id'].'</td>
 							   <td> '.$row1['name'].'</td>
 							   <td> '.$row1['email'].'</td>
-							   <td> '.$row1['mob'].'</td>
-							   <td>'.$row1['age'].'</td>
-							   <td> '.$row1['gender'].'</td>
+						
 							
 							   </td>
 							   <td>'.$row1['status'].'</td>
